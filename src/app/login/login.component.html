@@ -1,0 +1,21 @@
+<div style="height: 86vh; width: 100%; background-image: url('https://t4.ftcdn.net/jpg/04/60/71/01/360_F_460710131_YkD6NsivdyYsHupNvO3Y8MPEwxTAhORh.jpg'); background-size:cover;" class="d-flex justify-content-center align-items-center">
+    <div class="w-50 justify-content-center align-items-center text-white  flex-column" style=" height: 600px;">
+        <h3 class="p-3">Login Form</h3>
+        
+        <div class="justify-content-center align-items-center w-75 m-5 p-3">
+            <form #loginForm="ngForm" (ngSubmit)="login()">
+                <div><input type="text" placeholder="Email adress" [(ngModel)]="email" email required  #useremailinput="ngModel" name="email"  class="form-control m-5"></div>
+                <!-- invalid email -->
+                <div *ngIf="useremailinput.invalid && useremailinput.touched" class="text-danger fw-bolder">
+                    Invalid Email
+                </div>
+                <div><input type="password" name="password" #userpassword="ngModel" [(ngModel)]="password" placeholder="password" required pattern="[a-zA-Z0-9]*" minlength="5" class="form-control m-5"></div>
+                <div *ngIf="userpassword.invalid && userpassword.touched" class="text-danger fw-bolder">
+                    Invalid password
+                </div>
+
+                <button [disabled]="loginForm.invalid" type="submit" class="btn btn-light m-5">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

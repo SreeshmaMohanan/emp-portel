@@ -1,0 +1,47 @@
+<div class="d-flex">
+    <div *ngIf="showSidebar" style="height: 89vh; width: 150px;" class="sidebar bg-dark text-light p-3 d-flex flex-column">
+        <a style="text-decoration: none;margin-top: 10px; font-weight: bold ;color: white;" routerLink="/dashboard">Home</a>
+        <a style="text-decoration: none;margin-top: 10px; font-weight: bold ;color: white;" routerLink="/users">Users</a>
+        <button (click)="logout()" class="btn btn-light mt-auto">Logout</button>
+
+        
+        
+    </div>
+    <div class="dashboard p-3 w-100">
+    <div class="row">
+        <div  class="col-lg-8">
+            <div style="height: 180px; background-image: url('https://static.vecteezy.com/system/resources/thumbnails/001/226/221/small/abstract-orange-polygonal-banner.jpg');" class="admin-banner rounded d-flex align-items-center shadow">
+            <h1 class="text-center text-white fw-bolder fs-4"><i style="cursor: pointer;" (click)="menuClick()" class="fa-solid fa-bars me-3 ms-5 mt-2"></i> Welcome {{admin_name}}</h1>
+            </div>
+            <div class="row m-3">
+                <div class="col-lg-5">
+                    <!-- <h3 class="text-center fw-bolder">Calender</h3> -->
+                    <mat-card class="demo-inline-calendar-card shadow">
+                        <mat-calendar [(selected)]="selected"></mat-calendar>
+                      </mat-card>
+                    
+                </div>
+                <div class="col-lg-1">
+
+                </div>
+                <div class="col-lg-6 boder rounded shadow">
+                   <app-chart ></app-chart>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-4">
+            <div style="height: 400px;" class="edit-admin border rounded shadow p-2 ">
+               <app-update-admin (onAdminChange)="getUpdateAdmin($event)"></app-update-admin>
+
+            </div>
+            <div style="height: 200px;; background-image: url('https://static.vecteezy.com/system/resources/thumbnails/001/226/221/small/abstract-orange-polygonal-banner.jpg');" class="edit-admin border rounded shadow p-2 text-light d-flex align-items-center mt-2 justify-content-center fw-bolder">
+               <h2> <i class="fa-solid fa-users me-2"></i> Employees:{{employeeCount}}</h2>
+
+            </div>
+
+        </div>
+    </div>    
+    </div>
+</div>

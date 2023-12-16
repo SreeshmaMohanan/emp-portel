@@ -1,0 +1,53 @@
+
+<div class="d-flex">
+    <div style="height: 89vh; width: 150px;" class="sidebar bg-dark text-light p-3 d-flex flex-column">
+        <a style="text-decoration: none;margin-top: 10px; font-weight: bold ;color: white;" routerLink="/dashboard">Home</a>
+        <a style="text-decoration: none;margin-top: 10px; font-weight: bold ;color: white;" routerLink="/users">Users</a>
+
+        
+        
+    </div>
+    <div class="add-user m-4 p-3 w-75">
+        <h1>Add User details</h1>
+        <form #addUserForm="ngForm" (ngSubmit)="addUser()" class=" d-flex flex-column p-5 m-5">
+           <div> <input class="m-3 form-control p-2" type=" text"  placeholder="user id" name="id" [(ngModel)]="user.id" #uid="ngModel" required pattern="[0-9]*"></div>
+            <div *ngIf="uid.invalid && uid.touched" class="text-danger fw-bolder">
+                invalid User id
+
+            </div>
+            <div><input  class="m-3 form-control p-2" type=" text" placeholder="User name"  name="uname" [(ngModel)]="user.name" #uname="ngModel" required pattern="[A-Za-z]*"></div>
+            <div *ngIf="uname.invalid && uname.touched" class="text-danger fw-bolder">
+                invalid User name
+
+            </div>
+
+           <div> <input  class="m-3 form-control p-2" type=" email" placeholder="email" name="email" [(ngModel)]="user.email" required #useremailinput="ngModel"></div>
+
+           <div *ngIf="useremailinput.invalid && useremailinput.touched" class="text-danger fw-bolder">
+            Invalid Email
+        </div>
+
+
+            <div>
+                <select name="active" [(ngModel)]="user.status" #status="ngModel" required  class="m-3 form-control p-2"  type=" text" placeholder="status">
+                    <option value="" disabled selected hidden ></option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+
+            </div>
+            <div *ngIf="status.invalid && status.touched" class="text-danger fw-bolder">
+                Invalid user status
+            </div>
+            <div>
+                <button (click)="cancel()" class="btn p-2 ms-5 btn-waring">close</button>
+                <button type="submit" [disabled]="addUserForm.invalid" class="btn p-2 ms-5 btn-success">Save</button>
+            </div>
+
+
+
+
+        </form>
+
+</div>
+</div>
